@@ -15,6 +15,27 @@ testWebP(function (support) {
         document.querySelector('body').classList.add('no-webp');
     }
 });;
+// Prosucts swipper
+
+const swiper = new Swiper('.swiper', {
+  
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+});
+
+
+// About swipper
+
+const aboutSwiper = new Swiper('.about-swiper', {
+
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+});;
 
 const body = document.querySelector('body'),
     burgerMenu = document.querySelector('#burgerMenu'),
