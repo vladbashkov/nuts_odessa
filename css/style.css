@@ -108,6 +108,245 @@ article > * + * {
   margin-top: 1em;
 }
 
+[data-simplebar] {
+  position: relative;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.simplebar-wrapper {
+  overflow: hidden;
+  width: inherit;
+  height: inherit;
+  max-width: inherit;
+  max-height: inherit;
+}
+
+.simplebar-mask {
+  direction: inherit;
+  position: absolute;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: auto !important;
+  height: auto !important;
+  z-index: 0;
+}
+
+.simplebar-offset {
+  direction: inherit !important;
+  -webkit-box-sizing: inherit !important;
+          box-sizing: inherit !important;
+  resize: none !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 0;
+  margin: 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.simplebar-content-wrapper {
+  direction: inherit;
+  -webkit-box-sizing: border-box !important;
+          box-sizing: border-box !important;
+  position: relative;
+  display: block;
+  height: 100%;
+  /* Required for horizontal native scrollbar to not appear if parent is taller than natural height */
+  width: auto;
+  max-width: 100%;
+  /* Not required for horizontal scroll to trigger */
+  max-height: 100%;
+  /* Needed for vertical scroll to trigger */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.simplebar-content-wrapper::-webkit-scrollbar,
+.simplebar-hide-scrollbar::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.simplebar-content:before,
+.simplebar-content:after {
+  content: " ";
+  display: table;
+}
+
+.simplebar-placeholder {
+  max-height: 100%;
+  max-width: 100%;
+  width: 100%;
+  pointer-events: none;
+}
+
+.simplebar-height-auto-observer-wrapper {
+  -webkit-box-sizing: inherit !important;
+          box-sizing: inherit !important;
+  height: 100%;
+  width: 100%;
+  max-width: 1px;
+  position: relative;
+  float: left;
+  max-height: 1px;
+  overflow: hidden;
+  z-index: -1;
+  padding: 0;
+  margin: 0;
+  pointer-events: none;
+  -webkit-box-flex: inherit;
+      -ms-flex-positive: inherit;
+          flex-grow: inherit;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+}
+
+.simplebar-height-auto-observer {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+  display: block;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1000%;
+  width: 1000%;
+  min-height: 1px;
+  min-width: 1px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.simplebar-track {
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+[data-simplebar].simplebar-dragging .simplebar-content {
+  pointer-events: none;
+  -moz-user-select: none;
+   -ms-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+}
+
+[data-simplebar].simplebar-dragging .simplebar-track {
+  pointer-events: all;
+}
+
+.simplebar-scrollbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  min-height: 10px;
+}
+
+.simplebar-scrollbar:before {
+  position: absolute;
+  content: "";
+  background: black;
+  border-radius: 7px;
+  left: 2px;
+  right: 2px;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s linear;
+  -o-transition: opacity 0.2s linear;
+  transition: opacity 0.2s linear;
+}
+
+.simplebar-scrollbar.simplebar-visible:before {
+  /* When hovered, remove all transitions from drag handle */
+  opacity: 0.5;
+  -webkit-transition: opacity 0s linear;
+  -o-transition: opacity 0s linear;
+  transition: opacity 0s linear;
+}
+
+.simplebar-track.simplebar-vertical {
+  top: 0;
+  width: 11px;
+}
+
+.simplebar-track.simplebar-vertical .simplebar-scrollbar:before {
+  top: 2px;
+  bottom: 2px;
+}
+
+.simplebar-track.simplebar-horizontal {
+  left: 0;
+  height: 11px;
+}
+
+.simplebar-track.simplebar-horizontal .simplebar-scrollbar:before {
+  height: 100%;
+  left: 2px;
+  right: 2px;
+}
+
+.simplebar-track.simplebar-horizontal .simplebar-scrollbar {
+  right: auto;
+  left: 0;
+  top: 2px;
+  height: 7px;
+  min-height: 0;
+  min-width: 10px;
+  width: auto;
+}
+
+/* Rtl support */
+
+[data-simplebar-direction=rtl] .simplebar-track.simplebar-vertical {
+  right: auto;
+  left: 0;
+}
+
+.hs-dummy-scrollbar-size {
+  direction: rtl;
+  position: fixed;
+  opacity: 0;
+  visibility: hidden;
+  height: 500px;
+  width: 500px;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+
+.simplebar-hide-scrollbar {
+  position: fixed;
+  left: 0;
+  visibility: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
 a {
   color: inherit;
 }
@@ -144,6 +383,9 @@ a {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .header-top_container .discount {
@@ -442,6 +684,48 @@ a {
           transform: scale(1.1);
 }
 
+.header-basket .basket-modal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  opacity: 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  top: 100px;
+  right: 75px;
+  max-width: 500px;
+  padding: 10px 20px;
+  z-index: -1;
+  background: #FFFFFF;
+  border: 1.5px solid #337D5A;
+  -webkit-box-shadow: 3px 3px 5px #337D5A;
+          box-shadow: 3px 3px 5px #337D5A;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.header-basket .basket-modal .subtitle {
+  max-width: 150px;
+}
+
+.header-basket .basket-modal span {
+  font-family: "Raleway", sans-serif;
+  color: #337D5A;
+  font-size: 50px;
+}
+
+.header-basket .basket-modal .shop-btn {
+  margin: 0 0 0 25px;
+}
+
+.header-basket:hover .basket-modal {
+  opacity: 1;
+  z-index: 5;
+}
+
 .header-phones {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -510,8 +794,9 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -933,7 +1218,7 @@ footer {
 }
 
 .main-production_container {
-  padding: 60px 0;
+  padding: 60px 0 0 0;
 }
 
 .content-title {
@@ -1236,6 +1521,7 @@ footer {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin-bottom: 100px;
 }
 
 .shop-btn button {
@@ -1256,6 +1542,13 @@ footer {
 .shop-btn button:hover {
   background: #337D5A;
   color: #FFFFFF;
+}
+
+.subtitle {
+  font-family: "Raleway", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 40px 0;
 }
 
 .about-manufacturer {
@@ -1319,12 +1612,6 @@ footer {
   background: url(../img/about-next-arrow.svg) center no-repeat;
 }
 
-.about-manufacturer .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .about-manufacturer .about-text {
   min-width: 600px;
   padding-right: 100px;
@@ -1334,7 +1621,13 @@ footer {
   text-align: left;
 }
 
-.about-manufacturer .about-btn button {
+.about-manufacturer .product-scroll {
+  max-height: 300px;
+  padding-right: 20px;
+  overflow: auto;
+}
+
+.about-btn button {
   -webkit-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
@@ -1348,12 +1641,12 @@ footer {
   width: 170px;
 }
 
-.about-manufacturer .about-btn button:hover {
+.about-btn button:hover {
   background: #337D5A;
   color: #FFFFFF;
 }
 
-.about-manufacturer .title-text_container {
+.title-text_container {
   font-family: "Raleway", sans-serif;
   font-size: 16px;
   font-weight: 500;
@@ -1361,7 +1654,7 @@ footer {
   margin: 30px 0;
 }
 
-.about-manufacturer .title-text_container span {
+.title-text_container span {
   color: #337D5A;
 }
 
@@ -1486,6 +1779,779 @@ footer {
   max-width: 110px;
   line-height: 1.25;
 }
+
+.product-use {
+  padding: 80px 0;
+}
+
+.product-use_container {
+  padding-top: 60px;
+}
+
+.product-use_container .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.product-use_picture {
+  position: relative;
+  overflow: hidden;
+}
+
+.product-use_picture .use-picture_container {
+  width: 100%;
+  padding: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  top: 75%;
+  left: 50%;
+}
+
+.product-use_picture .use-picture_container .img-container {
+  width: 75px;
+  height: 75px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.product-use_picture .content-title {
+  color: #FFFFFF;
+  font-size: 40px;
+}
+
+.product-use_picture .use-text_container {
+  font-family: "Raleway", sans-serif;
+  opacity: 0;
+  font-size: 18px;
+  color: #FFFFFF;
+  text-align: center;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  margin-bottom: 15px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.product-use_picture::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #337D5A;
+  opacity: 0;
+  -webkit-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.product-use_picture:hover .use-picture_container {
+  top: 50%;
+}
+
+.product-use_picture:hover .use-text_container {
+  opacity: 1;
+}
+
+.product-use_picture:hover::before {
+  opacity: 0.95;
+}
+
+.no-webp .eco-container {
+  background: url(../img/eko-product.png) center/cover no-repeat; }
+
+.eco-container {
+  padding: 200px 0;
+}
+
+.eco-container .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.eco-container .container img {
+  margin: 45px 0;
+}
+
+.eco-container .content-title {
+  color: #FFFFFF;
+}
+
+.eco-container .eco-text {
+  font-family: "Raleway", sans-serif;
+  color: #FFFFFF;
+  font-size: 22px;
+  font-weight: 300;
+  max-width: 650px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.news-container {
+  background: #F9F9F9;
+  padding: 90px 0;
+}
+
+.news-swiper {
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.news-swiper .content-title {
+  text-align: left;
+}
+
+.news-swiper .news-swiper_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.news-swiper .news-text_container {
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  margin: 35px 0;
+}
+
+.news-swiper .swiper-wrapper {
+  margin: 40px 0;
+}
+
+.news-swiper .swiper-slide {
+  -webkit-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  border: 1.5px solid transparent;
+  position: relative;
+}
+
+.news-swiper .swiper-slide .video-btn {
+  opacity: 0;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  top: 25%;
+  left: 50%;
+  z-index: 5;
+}
+
+.news-swiper .swiper-slide img {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.news-swiper .swiper-slide:hover {
+  border: 1.5px solid #337D5A;
+}
+
+.news-swiper .swiper-slide:hover a:hover {
+  color: #337D5A;
+}
+
+.news-swiper .swiper-slide:hover .video-btn {
+  opacity: 1;
+}
+
+.news-swiper .swiper-button-next,
+.news-swiper .swiper-button-prev {
+  top: auto;
+  width: 70px;
+  height: 40px;
+  background: #337D5A;
+}
+
+.news-swiper .swiper-button-next {
+  right: 0;
+}
+
+.news-swiper .swiper-button-prev {
+  left: auto;
+  right: 70px;
+}
+
+.news-swiper .swiper-button-prev:after {
+  background: url(../img/about-prev-arrow.svg) center no-repeat;
+}
+
+.news-swiper .swiper-button-next:after {
+  background: url(../img/about-next-arrow.svg) center no-repeat;
+}
+
+.news-swiper .slider-container {
+  padding: 22px 25px;
+  background: #FFFFFF;
+}
+
+.news-swiper .slider-container a {
+  font-family: "Raleway", sans-serif;
+  position: relative;
+  color: #000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 20px;
+  max-width: 70px;
+  margin: 15px 0;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.news-swiper .slider-container a p {
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.news-swiper .slider-container a i {
+  height: 20px;
+  vertical-align: middle;
+}
+
+.news-swiper .slider-container a i::before {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  margin-left: 5px;
+}
+
+.news-swiper .news-date {
+  font-family: "Montserrat", sans-serif;
+  color: #8A8A8A;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.news-swiper .news-title {
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  margin: 15px 0;
+  line-height: 1.5;
+  max-width: 340px;
+}
+
+.news-swiper .news-text {
+  font-family: "Raleway", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  max-width: 340px;
+  line-height: 1.5;
+}
+
+.news-btn {
+  text-align: center;
+}
+
+.news-btn button {
+  font-family: "Raleway", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 20px 30px;
+  border: 1.5px solid #337D5A;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background: transparent;
+  border: 1.5px solid #337D5A;
+  color: #337D5A;
+}
+
+.news-btn button:hover {
+  background: #337D5A;
+  color: #FFFFFF;
+}
+
+.no-webp .content-header {
+  background: url(../img/shop-picture.png) center/cover no-repeat; }
+
+.content-header .container {
+  position: relative;
+  height: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.content-header .navigation-container {
+  position: absolute;
+  top: 35px;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #FFFFFF;
+  height: 15px;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.content-header .navigation-container * {
+  margin-right: 10px;
+}
+
+.content-header .navigation-container i {
+  margin-bottom: 2.5px;
+}
+
+.content-header .navigation-container a {
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.content-header .navigation-container a:hover {
+  color: #337D5A;
+}
+
+.product-container {
+  padding: 70px 0;
+}
+
+.filter-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.filter-container_block {
+  font-family: "Raleway", sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.filter-container_block * {
+  cursor: pointer;
+}
+
+.filter-container_block p {
+  font-size: 17px;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.filter-container_block select {
+  border: 1.5px solid #8A8A8A;
+  padding: 15px;
+  font-size: 16px;
+  margin-right: 30px;
+}
+
+.filter-container_block img {
+  margin-right: 5px;
+}
+
+.filter-container_block .taste {
+  width: 280px;
+}
+
+.filter-container_block .weight {
+  width: 170px;
+}
+
+.filter-container_block .filter-cross {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #8A8A8A;
+}
+
+.filter-container_block .filter-cross p {
+  font-weight: 500;
+}
+
+.filter-container_block .filter-cross img {
+  margin-right: 10px;
+}
+
+.filter-container_block .confirm-btn button {
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background: #337D5A;
+  border: 1.5px solid #337D5A;
+  color: #FFFFFF;
+  font-weight: 600;
+  width: 150px;
+  height: 50px;
+  margin-right: 50px;
+}
+
+.filter-container_block .confirm-btn button:hover {
+  background: transparent;
+  color: #337D5A;
+}
+
+.product-wraper {
+  display: none;
+}
+
+.product-active {
+  display: block;
+}
+
+.hide-button {
+  display: none;
+}
+
+.product-scroll {
+  height: 300px;
+}
+
+.product-scroll p:first-child {
+  margin-top: 0;
+}
+
+.product-scroll p:last-child {
+  margin-bottom: 0;
+}
+
+.simplebar-track.simplebar-vertical {
+  background: transparent;
+  border-radius: 5px;
+  width: 10px;
+}
+
+.simplebar-scrollbar {
+  z-index: 5;
+  height: 60px !important;
+}
+
+.simplebar-scrollbar::before {
+  background: #337D5A;
+  position: absolute;
+  opacity: 1;
+  height: 60px;
+}
+
+.simplebar-scrollbar.simplebar-visible::before {
+  opacity: 1;
+}
+
+.simplebar-track::after {
+  content: "";
+  z-index: 1;
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  top: 0;
+  right: 4px;
+  background: #8A8A8A;
+  display: block;
+}
+
+.no-webp .welcome-about {
+  background: url(../img/welcome-about.png) center/cover no-repeat; }
+
+.welcome-about .container {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.welcome-about .container .welcome-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.welcome-about .container .navigation-container {
+  position: absolute;
+  top: 35px;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #FFFFFF;
+  height: 15px;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.welcome-about .container .navigation-container * {
+  margin-right: 10px;
+}
+
+.welcome-about .container .navigation-container i {
+  margin-bottom: 2.5px;
+}
+
+.welcome-about .container .navigation-container a {
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.welcome-about .container .navigation-container a:hover {
+  color: #337D5A;
+}
+
+.about-founder {
+  padding: 100px 0;
+}
+
+.about-founder .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.about-founder .container .manufacturer-container {
+  width: 33%;
+}
+
+.about-founder .container .manufacturer-container:last-child {
+  overflow: hidden;
+  background: #337D5A;
+  color: #FFFFFF;
+  padding: 10px 30px;
+  position: relative;
+}
+
+.about-founder .container .manufacturer-container:last-child .content-title {
+  color: #FFFFFF;
+  font-size: 32px;
+}
+
+.about-founder .container .manufacturer-container:last-child .paint {
+  position: absolute;
+  bottom: -35px;
+  right: -90px;
+}
+
+.about-founder .container .content-title {
+  text-align: left;
+}
+
+.about-founder .manufacturer-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 50px 0;
+}
+
+.about-founder .manufacturer-block .dots {
+  margin: -7px 20px 0 0;
+}
+
+.about-founder .manufacturer-block i {
+  max-width: 310px;
+  font-size: 15px;
+}
+
+.gallery {
+  padding: 60px 0;
+}
+
+.gallery .title-text {
+  color: #000;
+  text-align: center;
+  max-width: none;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.gallery .product-use_container .container {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.gallery .product-use_picture:hover .gallery-paris {
+  top: 25%;
+}
+
+.gallery .gallery-paris {
+  text-align: left;
+  top: 50%;
+}
+
+.gallery .gallery-paris .content-title {
+  text-align: left;
+  width: 100%;
+}
+
+.gallery .gallery-paris .use-text_container {
+  text-align: left;
+}
+
+.gallery .shop-btn {
+  margin-bottom: 0;
+}
+
+.no-webp .project-video {
+  background: url(../img/video-block.png) center/cover no-repeat; }
+
+.project-video {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 200px 0;
+}
+
+.project-video .content-title {
+  color: #FFFFFF;
+}
+
+.project-video .title-text {
+  color: #FFFFFF;
+  font-size: 14px;
+  max-width: 600px;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+.gallery-pictures {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 30px 0;
+}
+
+.gallery-pictures .gallery-pictures_container {
+  position: relative;
+}
+
+.gallery-pictures .gallery-pictures_container .video-btn {
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.gallery-pictures .gallery-pictures_container:hover .video-btn {
+  opacity: 1;
+}
+
+.no-webp .eco-production {
+  background: url(../img/eco-product2.png) center/cover no-repeat; }
 
 @media (max-width: 1400px) {
   .container {
@@ -1946,3 +3012,13 @@ footer {
 .webp .welcome-container { background: url(../img/mainpage-img.webp) center/cover no-repeat; }
 
 .webp .goal-container { background: url(../img/our-goal.webp) center/cover no-repeat; }
+
+.webp .eco-container { background: url(../img/eko-product.webp) center/cover no-repeat; }
+
+.webp .content-header { background: url(../img/shop-picture.webp) center/cover no-repeat; }
+
+.webp .welcome-about { background: url(../img/welcome-about.webp) center/cover no-repeat; }
+
+.webp .project-video { background: url(../img/video-block.webp) center/cover no-repeat; }
+
+.webp .eco-production { background: url(../img/eco-product2.webp) center/cover no-repeat; }
