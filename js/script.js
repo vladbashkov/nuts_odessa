@@ -18,7 +18,9 @@ testWebP(function (support) {
 // Prosucts swipper
 
 const swiper = new Swiper('.swiper', {
-  
+
+  spaceBetween: 30,
+
     // Navigation arrows
     navigation: {
       nextEl: '.swiper-button-next',
@@ -43,6 +45,21 @@ const newsSwiper = new Swiper('.news-swiper', {
 
   slidesPerView: 3,
   spaceBetween: 30,
+
+  breakpoints: {
+    979: {
+      slidesPerView: 3,
+    },
+    600: {
+      slidesPerView: 2,
+    },
+    480: {
+      slidesPerView: 1,
+    },
+    320: {
+      slidesPerView: 1,
+    },
+  },
 
   navigation: {
     nextEl: '.swiper-button-next',
