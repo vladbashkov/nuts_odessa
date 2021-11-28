@@ -83,7 +83,9 @@ const body = document.querySelector('body'),
     menuCloseBTN = document.querySelector('#burgerClose'),
     shopBTN = document.querySelector('#shopBTN'),
     lessShopBTN = document.querySelector('#lessShopBTN'),
-    productWraper = document.querySelector('.product-wraper');
+    productWraper = document.querySelector('.product-wraper'),
+    filter = document.querySelector('#filter'),
+    filterBlock = document.querySelectorAll('.filter-container_block');
 
 let menuOpen = false;
 menuOpenBTN.addEventListener('click', ()=>{
@@ -100,7 +102,7 @@ menuCloseBTN.addEventListener('click', ()=>{
         body.classList.remove('ofhd');
         menuOpen = false;
     } 
-})
+});
 
 let products = false;
 shopBTN.addEventListener('click', ()=>{
@@ -110,7 +112,7 @@ shopBTN.addEventListener('click', ()=>{
         productWraper.classList.add('product-active');
         products = true;
     } 
-})
+});
 
 lessShopBTN.addEventListener('click', ()=>{
     if(products){
@@ -119,4 +121,11 @@ lessShopBTN.addEventListener('click', ()=>{
         productWraper.classList.remove('product-active');
         products = false;
     } 
-})
+});
+
+filter.addEventListener('click', ()=>{
+    for(let i=0; i<filterBlock.length; i++){
+        filterBlock[i].classList.toggle('active');
+        console.log(filterBlock[i]);
+    }
+});
