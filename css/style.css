@@ -1132,7 +1132,6 @@ footer {
   background: url(../img/mainpage-img.png) center/cover no-repeat; }
 
 .welcome-container {
-  height: 600px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1143,6 +1142,7 @@ footer {
       -ms-flex-pack: center;
           justify-content: center;
   text-align: center;
+  height: 600px;
 }
 
 .welcome-container .container {
@@ -1677,7 +1677,7 @@ footer {
           align-items: center;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
-          justify-content: start;
+          justify-content: flex-start;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -2275,7 +2275,15 @@ footer {
   margin-right: 10px;
 }
 
-.filter-container_block .confirm-btn button {
+.filter-container_block:nth-child(2).active,
+.filter-container_block:nth-child(3).active,
+.filter-container_block:nth-child(4).active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.confirm-btn button {
   -webkit-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
@@ -2288,17 +2296,9 @@ footer {
   margin-right: 50px;
 }
 
-.filter-container_block .confirm-btn button:hover {
+.confirm-btn button:hover {
   background: transparent;
   color: #337D5A;
-}
-
-.filter-container_block:nth-child(2).active,
-.filter-container_block:nth-child(3).active,
-.filter-container_block:nth-child(4).active {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .product-wraper {
@@ -2601,12 +2601,16 @@ footer {
   background: url(../img/payment-pic.png) center/cover no-repeat; }
 
 .payment-container {
-  max-height: 300px;
+  height: 300px;
 }
 
 .tabs-navigation {
   padding: 100px 0 15px 0;
   border-bottom: 1px solid #f2f2f2;
+}
+
+.tabs-wrapper {
+  overflow: hidden;
 }
 
 .tabs-wrapper .container {
@@ -2638,6 +2642,10 @@ footer {
       -ms-flex-align: center;
           align-items: center;
   position: relative;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  opacity: 0.5;
 }
 
 .tabs-li i {
@@ -2659,6 +2667,14 @@ footer {
   transition: all 0.5s ease-in-out;
 }
 
+.tabs-li:hover {
+  text-shadow: 2px 2px 3px #8A8A8A;
+}
+
+.tabs-li.active-nav {
+  opacity: 1;
+}
+
 .tabs-li.active-nav i {
   color: #337D5A;
 }
@@ -2669,7 +2685,12 @@ footer {
 
 .payment,
 .delivery,
-.refund {
+.refund,
+.big-supermarkets,
+.retail-shop,
+.horeca,
+.fitnes,
+.bakery {
   padding: 50px 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2677,6 +2698,7 @@ footer {
   position: absolute;
   top: 100px;
   opacity: 0;
+  z-index: -2;
   -webkit-transition: all 1s ease-in-out;
   -o-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out;
@@ -2684,14 +2706,25 @@ footer {
 
 .payment .tab-img,
 .delivery .tab-img,
-.refund .tab-img {
+.refund .tab-img,
+.big-supermarkets .tab-img,
+.retail-shop .tab-img,
+.horeca .tab-img,
+.fitnes .tab-img,
+.bakery .tab-img {
   max-width: 770px;
 }
 
 .payment.tab-active,
 .delivery.tab-active,
-.refund.tab-active {
+.refund.tab-active,
+.big-supermarkets.tab-active,
+.retail-shop.tab-active,
+.horeca.tab-active,
+.fitnes.tab-active,
+.bakery.tab-active {
   top: 0;
+  z-index: 5;
   opacity: 1;
 }
 
@@ -2781,6 +2814,50 @@ footer {
   line-height: 1.5;
   font-weight: 400;
 }
+
+.no-webp .wholesale-container {
+  background: url(../img/wholesale.png) center/cover no-repeat; }
+
+.wholesale-container {
+  height: 600px;
+}
+
+.wholesale-container .title-text {
+  text-align: center;
+}
+
+.wholesale-header {
+  padding: 100px 0 20px 0;
+}
+
+.wholesale-header .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.wholesale-header .container .content-title {
+  text-align: left;
+}
+
+.wholesale-text_block {
+  margin: 0 50px;
+}
+
+.wholesale-text_block:last-child {
+  margin: 0;
+}
+
+.wholesale-tabs .tabs-li {
+  max-width: 200px;
+}
+
+.wholesale-tabs .tab-text {
+  margin-bottom: 20px;
+}
+
+.no-webp .eco-wholesale {
+  background: url(../img/eco-wholesale.png) center/cover no-repeat; }
 
 @media (max-width: 1400px) {
   .container {
@@ -2918,9 +2995,32 @@ footer {
     width: 100px;
   }
 
-  .filter-container_block .confirm-btn button {
+  .confirm-btn button {
     width: 125px;
     height: 40px;
+  }
+
+  .tabs-wrapper .container {
+    height: 500px;
+  }
+
+  .payment .tab-img,
+  .delivery .tab-img,
+  .refund .tab-img,
+  .big-supermarkets .tab-img,
+  .retail-shop .tab-img,
+  .horeca .tab-img,
+  .fitnes .tab-img,
+  .bakery .tab-img {
+    max-width: 500px;
+  }
+
+  .wholesale-tabs .tabs-li i {
+    font-size: 20px;
+  }
+
+  .wholesale-tabs .tabs-li b {
+    font-size: 18px;
   }
 }
 
@@ -3155,11 +3255,6 @@ footer {
     width: 170px;
   }
 
-  .filter-container_block .confirm-btn button {
-    width: 150px;
-    height: 50px;
-  }
-
   .filter-container_block:last-child {
     -webkit-box-pack: end;
         -ms-flex-pack: end;
@@ -3168,6 +3263,11 @@ footer {
 
   .filter-container_block {
     margin: 20px 0;
+  }
+
+  .confirm-btn button {
+    width: 150px;
+    height: 50px;
   }
 
   .about-founder .container .manufacturer-container {
@@ -3196,6 +3296,70 @@ footer {
     grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
+  }
+
+  .tabs-navigation {
+    padding: 50px 0 15px 0;
+  }
+
+  .tabs-wrapper .container {
+    height: 800px;
+  }
+
+  .payment .tab-img,
+  .delivery .tab-img,
+  .refund .tab-img,
+  .big-supermarkets .tab-img,
+  .retail-shop .tab-img,
+  .horeca .tab-img,
+  .fitnes .tab-img,
+  .bakery .tab-img {
+    margin: 40px auto 0;
+  }
+
+  .payment,
+  .delivery,
+  .refund,
+  .big-supermarkets,
+  .retail-shop,
+  .horeca,
+  .fitnes,
+  .bakery {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+
+  .tab-body {
+    padding-right: 0;
+  }
+
+  .wholesale-header .container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+
+  .wholesale-header {
+    padding: 50px 0 10px 0;
+  }
+
+  .wholesale-text_block {
+    margin: 0;
+  }
+
+  .wholesale-text_block .title-text_container {
+    margin: 15px 0;
+  }
+
+  .wholesale-tabs .tabs-li i {
+    font-size: 18px;
+  }
+
+  .wholesale-tabs .tabs-li b {
+    font-size: 16px;
   }
 }
 
@@ -3389,7 +3553,7 @@ footer {
             flex-direction: column;
     -webkit-box-align: start;
         -ms-flex-align: start;
-            align-items: start;
+            align-items: flex-start;
   }
 
   .burger-container_nav .navbar-list .navbar-li {
@@ -3532,6 +3696,26 @@ footer {
   .news-swiper .swiper-slide .video-btn {
     top: 22%;
   }
+
+  .tabs-wrapper .container {
+    height: 700px;
+  }
+
+  .wholesale-tabs .tabs-li i {
+    margin-right: 0;
+  }
+
+  .wholesale-tabs .tabs-li b {
+    margin-top: 5px;
+  }
+
+  .wholesale-tabs .tabs-li {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    text-align: center;
+  }
 }
 
 @media (max-width: 600px) {
@@ -3558,7 +3742,7 @@ footer {
     min-height: auto;
     -webkit-box-pack: start;
         -ms-flex-pack: start;
-            justify-content: start;
+            justify-content: flex-start;
   }
 
   .contacts .footer-icon {
@@ -3772,6 +3956,18 @@ footer {
   .gallery .gallery-pictures .gallery-pictures_container img {
     width: 100%;
   }
+
+  .tabs-li b {
+    font-size: 14px;
+  }
+
+  .wholesale-tabs .tabs-li i {
+    font-size: 26px;
+  }
+
+  .wholesale-tabs .tabs-li b {
+    display: none;
+  }
 }
 
 @media (max-width: 480px) {
@@ -3782,7 +3978,7 @@ footer {
   .contacts .contacts-col {
     -webkit-box-align: start;
         -ms-flex-align: start;
-            align-items: start;
+            align-items: flex-start;
   }
 
   .contacts .contacts-col .contacts-block {
@@ -3923,6 +4119,18 @@ footer {
   .gallery .product-use_picture:hover .use-picture_container {
     top: 45%;
   }
+
+  .tabs-wrapper .container {
+    height: 700px;
+  }
+
+  .tabs-li b {
+    display: none;
+  }
+
+  .wholesale-tabs .tabs-li i {
+    font-size: 30px;
+  }
 }
 
 @media (max-width: 375px) {
@@ -4023,3 +4231,7 @@ footer {
 .webp .eco-production { background: url(../img/eco-product2.webp) center/cover no-repeat; }
 
 .webp .payment-container { background: url(../img/payment-pic.webp) center/cover no-repeat; }
+
+.webp .wholesale-container { background: url(../img/wholesale.webp) center/cover no-repeat; }
+
+.webp .eco-wholesale { background: url(../img/eco-wholesale.webp) center/cover no-repeat; }

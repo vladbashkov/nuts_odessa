@@ -82,7 +82,7 @@ const body = document.querySelector('body'),
     menuOpenBTN = document.querySelector('#burgerBTN'),
     menuCloseBTN = document.querySelector('#burgerClose');
 
-try {
+if (burgerMenu != null) {
     let menuOpen = false;
     menuOpenBTN.addEventListener('click', ()=>{
         if(!menuOpen){
@@ -99,13 +99,13 @@ try {
             menuOpen = false;
         } 
     });
-} catch {}
+};
 
 const shopBTN = document.querySelector('#shopBTN'),
     lessShopBTN = document.querySelector('#lessShopBTN'),
     productWraper = document.querySelector('.product-wraper');
 
-try {
+if (shopBTN != null) {
     let products = false;
     shopBTN.addEventListener('click', ()=>{
         if(!products){
@@ -124,22 +124,34 @@ try {
             products = false;
         } 
     });
-} catch {};
+};
 
 
 const filter = document.querySelector('#filter'),
     filterBlock = document.querySelectorAll('.filter-container_block');
 
-try {
+if (filter != null) {
     filter.addEventListener('click', ()=>{
         for(let i=0; i<filterBlock.length; i++){
             filterBlock[i].classList.toggle('active');
             console.log(filterBlock[i]);
         }
     });
-} catch {};
+};
 
 // Tabs
+
+const activeElement = (id, element) => {	
+
+    currentActive = document.querySelector('.tab-active');
+    currentActive && currentActive.classList.remove('tab-active');
+
+    currentColored = document.querySelector('.active-nav');
+    currentColored && currentColored.classList.remove('active-nav');
+
+    element.classList.add('active-nav');
+    id.classList.add('tab-active');
+}
 
 const payment = document.querySelector('#payment'),
     paymentNav = document.querySelector('#paymentNav'),
@@ -148,24 +160,36 @@ const payment = document.querySelector('#payment'),
     refund = document.querySelector('#refund'),
     refundNav = document.querySelector('#refundNav');
 
-try {
+if (payment != null) {
     payment.classList.add('tab-active');
     paymentNav.classList.add('active-nav');
-
-    const activeElement = (id, element) => {	
-
-        currentActive = document.querySelector('.tab-active');
-        currentActive && currentActive.classList.remove('tab-active');
-
-        currentColored = document.querySelector('.active-nav');
-        currentColored && currentColored.classList.remove('active-nav');
-
-        element.classList.add('active-nav');
-        id.classList.add('tab-active');
-    }
 
     paymentNav.onclick = () => activeElement(payment, paymentNav);
     deliveryNav.onclick = () => activeElement(delivery, deliveryNav);
     refundNav.onclick = () => activeElement(refund, refundNav);
-} catch {};
+};
+
+// Tabs wholesale
+
+const bigSupermarkets = document.querySelector('#bigSupermarkets'),
+    supermarketNav = document.querySelector('#supermarketNav'),
+    retailShop = document.querySelector('#retailShop'),
+    retailNav = document.querySelector('#retailNav'),
+    horeca = document.querySelector('#horeca'),
+    horecaNav = document.querySelector('#horecaNav'),
+    fitnes = document.querySelector('#fitnes'),
+    fitnesNav = document.querySelector('#fitnesNav'),
+    bakery = document.querySelector('#bakery'),
+    bakeryNav = document.querySelector('#bakeryNav');
+
+if (bigSupermarkets != null) {
+    bigSupermarkets.classList.add('tab-active');
+    supermarketNav.classList.add('active-nav');
+
+    supermarketNav.onclick = () => activeElement(bigSupermarkets, supermarketNav);
+    retailNav.onclick = () => activeElement(retailShop, retailNav);
+    horecaNav.onclick = () => activeElement(horeca, horecaNav);
+    fitnesNav.onclick = () => activeElement(fitnes, fitnesNav);
+    bakeryNav.onclick = () => activeElement(bakery, bakeryNav);
+};
 
