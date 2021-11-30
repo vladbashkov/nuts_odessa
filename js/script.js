@@ -82,7 +82,7 @@ const body = document.querySelector('body'),
     menuOpenBTN = document.querySelector('#burgerBTN'),
     menuCloseBTN = document.querySelector('#burgerClose');
 
-if (burgerMenu) {
+try {
     let menuOpen = false;
     menuOpenBTN.addEventListener('click', ()=>{
         if(!menuOpen){
@@ -99,13 +99,13 @@ if (burgerMenu) {
             menuOpen = false;
         } 
     });
-};
+} catch {}
 
 const shopBTN = document.querySelector('#shopBTN'),
     lessShopBTN = document.querySelector('#lessShopBTN'),
     productWraper = document.querySelector('.product-wraper');
 
-if (shopBTN) {
+try {
     let products = false;
     shopBTN.addEventListener('click', ()=>{
         if(!products){
@@ -124,19 +124,20 @@ if (shopBTN) {
             products = false;
         } 
     });
-}
+} catch {};
 
 
 const filter = document.querySelector('#filter'),
     filterBlock = document.querySelectorAll('.filter-container_block');
 
-if (filter) {
+try {
     filter.addEventListener('click', ()=>{
         for(let i=0; i<filterBlock.length; i++){
             filterBlock[i].classList.toggle('active');
+            console.log(filterBlock[i]);
         }
     });
-};
+} catch {};
 
 // Tabs
 
@@ -147,7 +148,7 @@ const payment = document.querySelector('#payment'),
     refund = document.querySelector('#refund'),
     refundNav = document.querySelector('#refundNav');
 
-if (payment) {
+try {
     payment.classList.add('tab-active');
     paymentNav.classList.add('active-nav');
 
@@ -166,5 +167,5 @@ if (payment) {
     paymentNav.onclick = () => activeElement(payment, paymentNav);
     deliveryNav.onclick = () => activeElement(delivery, deliveryNav);
     refundNav.onclick = () => activeElement(refund, refundNav);
-};
+} catch {};
 
