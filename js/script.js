@@ -80,52 +80,91 @@ const newsSwiper = new Swiper('.news-swiper', {
 const body = document.querySelector('body'),
     burgerMenu = document.querySelector('#burgerMenu'),
     menuOpenBTN = document.querySelector('#burgerBTN'),
-    menuCloseBTN = document.querySelector('#burgerClose'),
-    shopBTN = document.querySelector('#shopBTN'),
+    menuCloseBTN = document.querySelector('#burgerClose');
+
+if (burgerMenu) {
+    let menuOpen = false;
+    menuOpenBTN.addEventListener('click', ()=>{
+        if(!menuOpen){
+            burgerMenu.classList.add('show');
+            body.classList.add('ofhd');
+            menuOpen = true;
+        } 
+    })
+
+    menuCloseBTN.addEventListener('click', ()=>{
+        if(menuOpen){
+            burgerMenu.classList.remove('show');
+            body.classList.remove('ofhd');
+            menuOpen = false;
+        } 
+    });
+};
+
+const shopBTN = document.querySelector('#shopBTN'),
     lessShopBTN = document.querySelector('#lessShopBTN'),
-    productWraper = document.querySelector('.product-wraper'),
-    filter = document.querySelector('#filter'),
+    productWraper = document.querySelector('.product-wraper');
+
+if (shopBTN) {
+    let products = false;
+    shopBTN.addEventListener('click', ()=>{
+        if(!products){
+            lessShopBTN.classList.remove('hide-button');
+            shopBTN.classList.add('hide-button');
+            productWraper.classList.add('product-active');
+            products = true;
+        } 
+    });
+    
+    lessShopBTN.addEventListener('click', ()=>{
+        if(products){
+            lessShopBTN.classList.add('hide-button');
+            shopBTN.classList.remove('hide-button');
+            productWraper.classList.remove('product-active');
+            products = false;
+        } 
+    });
+}
+
+
+const filter = document.querySelector('#filter'),
     filterBlock = document.querySelectorAll('.filter-container_block');
 
-let menuOpen = false;
-menuOpenBTN.addEventListener('click', ()=>{
-    if(!menuOpen){
-        burgerMenu.classList.add('show');
-        body.classList.add('ofhd');
-        menuOpen = true;
-    } 
-})
+if (filter) {
+    filter.addEventListener('click', ()=>{
+        for(let i=0; i<filterBlock.length; i++){
+            filterBlock[i].classList.toggle('active');
+        }
+    });
+};
 
-menuCloseBTN.addEventListener('click', ()=>{
-    if(menuOpen){
-        burgerMenu.classList.remove('show');
-        body.classList.remove('ofhd');
-        menuOpen = false;
-    } 
-});
+// Tabs
 
-let products = false;
-shopBTN.addEventListener('click', ()=>{
-    if(!products){
-        lessShopBTN.classList.remove('hide-button');
-        shopBTN.classList.add('hide-button');
-        productWraper.classList.add('product-active');
-        products = true;
-    } 
-});
+const payment = document.querySelector('#payment'),
+    paymentNav = document.querySelector('#paymentNav'),
+    delivery = document.querySelector('#delivery'),
+    deliveryNav = document.querySelector('#deliveryNav'),
+    refund = document.querySelector('#refund'),
+    refundNav = document.querySelector('#refundNav');
 
-lessShopBTN.addEventListener('click', ()=>{
-    if(products){
-        lessShopBTN.classList.add('hide-button');
-        shopBTN.classList.remove('hide-button');
-        productWraper.classList.remove('product-active');
-        products = false;
-    } 
-});
+if (payment) {
+    payment.classList.add('tab-active');
+    paymentNav.classList.add('active-nav');
 
-filter.addEventListener('click', ()=>{
-    for(let i=0; i<filterBlock.length; i++){
-        filterBlock[i].classList.toggle('active');
-        console.log(filterBlock[i]);
+    const activeElement = (id, element) => {	
+
+        currentActive = document.querySelector('.tab-active');
+        currentActive && currentActive.classList.remove('tab-active');
+
+        currentColored = document.querySelector('.active-nav');
+        currentColored && currentColored.classList.remove('active-nav');
+
+        element.classList.add('active-nav');
+        id.classList.add('tab-active');
     }
-});
+
+    paymentNav.onclick = () => activeElement(payment, paymentNav);
+    deliveryNav.onclick = () => activeElement(delivery, deliveryNav);
+    refundNav.onclick = () => activeElement(refund, refundNav);
+};
+
