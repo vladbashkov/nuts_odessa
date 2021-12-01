@@ -1174,6 +1174,7 @@ footer {
   font-size: 25px;
   font-weight: 500;
   color: #FFFFFF;
+  text-align: center;
   letter-spacing: 1px;
   line-height: 1.5;
   max-width: 600px;
@@ -2054,12 +2055,12 @@ footer {
   background: url(../img/about-next-arrow.svg) center no-repeat;
 }
 
-.news-swiper .slider-container {
+.slider-container {
   padding: 22px 25px;
   background: #FFFFFF;
 }
 
-.news-swiper .slider-container a {
+.slider-container a {
   font-family: "Raleway", sans-serif;
   position: relative;
   color: #000;
@@ -2077,17 +2078,17 @@ footer {
   transition: all 0.3s ease-in-out;
 }
 
-.news-swiper .slider-container a p {
+.slider-container a p {
   font-weight: 600;
   margin-right: 10px;
 }
 
-.news-swiper .slider-container a i {
+.slider-container a i {
   height: 20px;
   vertical-align: middle;
 }
 
-.news-swiper .slider-container a i::before {
+.slider-container a i::before {
   position: absolute;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
@@ -2096,14 +2097,18 @@ footer {
   margin-left: 5px;
 }
 
-.news-swiper .news-date {
+.slider-container a:hover {
+  color: #337D5A;
+}
+
+.slider-container .news-date {
   font-family: "Montserrat", sans-serif;
   color: #8A8A8A;
   font-size: 13px;
   font-weight: 500;
 }
 
-.news-swiper .news-title {
+.slider-container .news-title {
   font-family: "Raleway", sans-serif;
   font-weight: 700;
   font-size: 16px;
@@ -2112,7 +2117,7 @@ footer {
   max-width: 340px;
 }
 
-.news-swiper .news-text {
+.slider-container .news-text {
   font-family: "Raleway", sans-serif;
   font-size: 14px;
   font-weight: 500;
@@ -2161,7 +2166,8 @@ footer {
           justify-content: center;
 }
 
-.content-header .navigation-container {
+.navigation-container {
+  font-family: "Raleway", sans-serif;
   position: absolute;
   top: 35px;
   left: 0;
@@ -2176,21 +2182,17 @@ footer {
           align-items: center;
 }
 
-.content-header .navigation-container * {
+.navigation-container * {
   margin-right: 10px;
 }
 
-.content-header .navigation-container i {
-  margin-bottom: 2.5px;
-}
-
-.content-header .navigation-container a {
+.navigation-container a {
   -webkit-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
 
-.content-header .navigation-container a:hover {
+.navigation-container a:hover {
   color: #337D5A;
 }
 
@@ -2416,10 +2418,6 @@ footer {
   margin-right: 10px;
 }
 
-.welcome-about .container .navigation-container i {
-  margin-bottom: 2.5px;
-}
-
 .welcome-about .container .navigation-container a {
   -webkit-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
@@ -2557,6 +2555,7 @@ footer {
 
 .project-video .title-text {
   color: #FFFFFF;
+  text-align: center;
   font-size: 14px;
   max-width: 600px;
   margin: 0;
@@ -2645,7 +2644,7 @@ footer {
   -webkit-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  opacity: 0.5;
+  opacity: 0.2;
 }
 
 .tabs-li i {
@@ -2859,6 +2858,80 @@ footer {
 .no-webp .eco-wholesale {
   background: url(../img/eco-wholesale.png) center/cover no-repeat; }
 
+.news-header_container {
+  background: transparent;
+  height: auto;
+  padding: 25px 0;
+}
+
+.news-header_container .container {
+  position: relative;
+}
+
+.news-header_container .main-title,
+.news-header_container .title-text {
+  color: #000;
+  text-align: center;
+}
+
+.news-header_container .main-title {
+  padding: 40px 0;
+}
+
+.news-header_container .title-text {
+  margin: 0 auto;
+  font-weight: 300;
+  font-size: 18px;
+}
+
+.news-header_container .navigation-container {
+  color: #8A8A8A;
+  top: 0;
+}
+
+.main-news {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1.5px solid transparent;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.main-news .news-pic_container {
+  max-width: 868px;
+}
+
+.main-news:hover {
+  border: 1.5px solid #337D5A;
+}
+
+.more-news {
+  margin: 40px auto;
+  width: 200px;
+  height: 50px;
+}
+
+.more-news button {
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background: transparent;
+  border: 1.5px solid #337D5A;
+  color: #337D5A;
+  width: 100%;
+  height: 100%;
+}
+
+.more-news button:hover {
+  background: #337D5A;
+  color: #FFFFFF;
+}
+
+.no-webp .gallery-header_container {
+  background: url(../img/gallery-main.png) center/cover no-repeat; }
+
 @media (max-width: 1400px) {
   .container {
     max-width: 1185px;
@@ -3021,6 +3094,10 @@ footer {
 
   .wholesale-tabs .tabs-li b {
     font-size: 18px;
+  }
+
+  .main-news .news-pic_container {
+    max-width: 600px;
   }
 }
 
@@ -3213,24 +3290,24 @@ footer {
     top: 25%;
   }
 
-  .news-swiper .slider-container a {
+  .slider-container a {
     margin: 15px 0 0 0;
   }
 
-  .news-swiper .slider-container {
-    padding: 10px 15px;
-  }
-
-  .news-swiper .news-date {
+  .slider-container .news-date {
     font-size: 10px;
   }
 
-  .news-swiper .news-title {
+  .slider-container .news-title {
     font-size: 13px;
   }
 
-  .news-swiper .news-text {
+  .slider-container .news-text {
     font-size: 11px;
+  }
+
+  .slider-container {
+    padding: 10px 15px;
   }
 
   .filter-container {
@@ -3360,6 +3437,16 @@ footer {
 
   .wholesale-tabs .tabs-li b {
     font-size: 16px;
+  }
+
+  .main-news .news-pic_container {
+    max-width: 400px;
+  }
+
+  .main-news {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
 }
 
@@ -3716,6 +3803,18 @@ footer {
             flex-direction: column;
     text-align: center;
   }
+
+  .main-news .news-pic_container {
+    max-width: none;
+    width: 100%;
+  }
+
+  .main-news {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 
 @media (max-width: 600px) {
@@ -3967,6 +4066,10 @@ footer {
 
   .wholesale-tabs .tabs-li b {
     display: none;
+  }
+
+  .main-news .slider-container {
+    width: 100%;
   }
 }
 
@@ -4235,3 +4338,5 @@ footer {
 .webp .wholesale-container { background: url(../img/wholesale.webp) center/cover no-repeat; }
 
 .webp .eco-wholesale { background: url(../img/eco-wholesale.webp) center/cover no-repeat; }
+
+.webp .gallery-header_container { background: url(../img/gallery-main.webp) center/cover no-repeat; }
