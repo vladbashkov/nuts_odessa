@@ -193,3 +193,24 @@ if (bigSupermarkets != null) {
     bakeryNav.onclick = () => activeElement(bakery, bakeryNav);
 };
 
+// Tabs cart
+
+const descriptionNav = document.querySelector('#descriptionNav'),
+    descriptionCart = document.querySelector('#descriptionCart'),
+    packageCart = document.querySelector('#packageCart'),
+    packageNav = document.querySelector('#packageNav'),
+    paymentCart = document.querySelector('#paymentCart'),
+    paymentCartNav = document.querySelector('#paymentCartNav'),
+    deliveryCart = document.querySelector('#deliveryCart'),
+    deliveryCartNav = document.querySelector('#deliveryCartNav');
+
+
+if (descriptionCart != null) {
+    descriptionCart.classList.add('tab-active');
+    descriptionNav.classList.add('active-nav');
+
+    descriptionNav.onclick = () => activeElement(descriptionCart, descriptionNav);
+    packageNav.onclick = () => activeElement(packageCart, packageNav);
+    paymentCartNav.onclick = () => activeElement(paymentCart, paymentCartNav);
+    deliveryCartNav.onclick = () => activeElement(deliveryCart, deliveryCartNav);
+}
