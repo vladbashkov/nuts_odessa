@@ -214,3 +214,74 @@ if (descriptionCart != null) {
     paymentCartNav.onclick = () => activeElement(paymentCart, paymentCartNav);
     deliveryCartNav.onclick = () => activeElement(deliveryCart, deliveryCartNav);
 }
+
+// Order page
+
+const orderHide = (first, second, third) => {
+    first.classList.add('order-hide');
+    second.classList.add('order-hide');
+    third.classList.add('order-active');
+}
+
+const deliveryActive = (element) => {	
+    currentActive = document.querySelector('.delivery-active');
+    currentActive && currentActive.classList.remove('delivery-active');
+
+    element.classList.add('delivery-active');
+}
+
+const order_BTN = document.querySelector('#order_BTN'),
+    basketRow = document.querySelector('#basketRow'),
+    basketAutorization = document.querySelector('.basket-authorization'),
+    order = document.querySelector('#order'),
+    NPdelivery = document.querySelector('#NPdelivery'),
+    NPdeliveryAddress = document.querySelector('#NPdeliveryAddress'),
+    Courier = document.querySelector('#Courier'),
+    CourierAddress = document.querySelector('#CourierAddress'),
+    Pickup = document.querySelector('#Pickup'),
+    PickupAddress = document.querySelector('#PickupAddress');
+
+if (order_BTN != null) {
+    order_BTN.onclick = () => orderHide(basketRow, basketAutorization, order);
+    NPdelivery.onclick = () => deliveryActive(NPdeliveryAddress);
+    Courier.onclick = () => deliveryActive(CourierAddress);
+    Pickup.onclick = () => deliveryActive(PickupAddress);
+}
+
+// Registration 
+
+const registrationActive = (element, container) => {	
+    currentActive = document.querySelector('.reg-li_active');
+    currentActive && currentActive.classList.remove('reg-li_active');
+
+    currentContainer = document.querySelector('.form-show');
+    currentContainer && currentContainer.classList.remove('form-show');
+
+    element.classList.add('reg-li_active');
+    container.classList.add('form-show')
+}
+
+const entityActive = (radio, cont) => {
+    if (radio.checked) {
+        currentActive = document.querySelector('.ent-show');
+        currentActive && currentActive.classList.remove('ent-show');
+
+        cont.classList.add('ent-show')
+    }
+}
+
+const Fop = document.querySelector('#FOP'),
+    Entity = document.querySelector('#Entity'),
+    FOPcontainer = document.querySelector('#FOPcontainer'),
+    EntityContainer = document.querySelector('#EntityContainer'),
+    entityRadio = document.querySelector('#entityRadio'),
+    fopRadio = document.querySelector('#fopRadio'),
+    entityForm = document.querySelector('#entityForm'),
+    fopForm = document.querySelector('#fopForm');
+
+if (Fop != null) {
+    Fop.onclick = () => registrationActive(Fop, FOPcontainer);
+    Entity.onclick = () => registrationActive(Entity, EntityContainer);
+    entityRadio.onclick = () => entityActive(entityRadio, entityForm);
+    fopRadio.onclick = () => entityActive(fopRadio, fopForm);
+}
