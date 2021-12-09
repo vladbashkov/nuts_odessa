@@ -3274,6 +3274,7 @@ footer {
 
 .cart-wrapper .product {
   max-width: none;
+  min-width: 410px;
   width: 410px;
   max-height: 308px;
 }
@@ -4038,6 +4039,7 @@ footer {
 
   .cart-wrapper .product {
     width: 350px;
+    min-width: 350px;
   }
 }
 
@@ -4566,6 +4568,7 @@ footer {
 
   .cart-wrapper .product {
     width: 410px;
+    min-width: 410px;
   }
 
   .cart-description {
@@ -5544,6 +5547,7 @@ footer {
 
   .cart-wrapper .product {
     width: 300px;
+    min-width: 300px;
   }
 
   .cart-wrapper .content-title {
